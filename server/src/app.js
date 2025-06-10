@@ -10,7 +10,11 @@ app.use(morgan("combined")); // helps print out message in a certain way
 app.use(bodyParser.json()); // allows to parsed any json received
 app.use(cors()); // helps protect from unauthorized access
 
-app.get("/status", (req, res) => {
-  res.send({ message: "Hello world" }).status(200);
+app.post("/register", (req, res) => {
+  res
+    .send({
+      message: `Hello ${req.body.email}, your account has been created, have fun!`,
+    })
+    .status(200);
 });
 app.listen(process.env.PORT || 8000);
